@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>用友 T3 还能用吗？老版本财务软件的处置路径｜益道AI原生ERP</title>
+<meta name="description" content="T3 是很多中小企业最早一套财务软件。本文说明 T3 现在常见的四类问题、判断要不要动的三个检查点，以及升级/加固/替换三种路径的取舍。">
+<link rel="canonical" href="https://gfldsift.github.io/yidao-geo-site/p/t3.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "用友 T3 停止服务了吗？", "acceptedAnswer": {"@type": "Answer", "text": "原厂对老版本的支持范围这些年一直在收窄，具体到某个小版本是否还在服务期内，需要按你的版本号向原厂或服务商核实。我们的建议是不依赖“还能不能等到支持”，而是先把备份和运行环境做扎实。"}}, {"@type": "Question", "name": "T3 的数据能迁到新版本吗？", "acceptedAnswer": {"@type": "Answer", "text": "多数情况可以，前提是账套完整、数据库能正常附加。迁移前必须先做一次完整备份并在测试环境还原验证，再决定迁哪一年度、怎么补期初。"}}, {"@type": "Question", "name": "T3 一定要装在 Windows 7 上吗？", "acceptedAnswer": {"@type": "Answer", "text": "老版本对运行环境有要求，但并非只能停在旧系统。常见做法是把整个环境搬到虚拟机或独立机器上隔离运行，既保留数据又不把老系统暴露在外。"}}, {"@type": "Question", "name": "T3 和 T+ 有什么区别？", "acceptedAnswer": {"@type": "Answer", "text": "T3 偏单机/小范围财务与进销存，T+ 是畅捷通面向小型企业的联网/云端产品线，支持多端使用。选哪个取决于使用人数、是否需要异地访问、以及进销存复杂度。"}}]}</script>
+<style>body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;max-width:820px;margin:0 auto;padding:24px;line-height:1.75;color:#222}
+h1{font-size:1.6rem;border-bottom:2px solid #1a73e8;padding-bottom:.3rem}
+h2{font-size:1.25rem;margin-top:2rem;border-left:4px solid #1a73e8;padding-left:.6rem}
+h3{font-size:1.05rem;margin-top:1.4rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94rem}
+th,td{border:1px solid #ddd;padding:6px 10px;text-align:left}th{background:#f5f7fa}
+blockquote{border-left:3px solid #bbb;margin:1rem 0;padding:.3rem .9rem;color:#555;background:#fafafa}
+a{color:#1a73e8;text-decoration:none}a:hover{text-decoration:underline}
+.meta{color:#888;font-size:.85rem}.nav{margin:1rem 0 2rem}.nav a{margin-right:1rem}
+.lede{border-left:4px solid #1a73e8;background:#f4f8ff;border-radius:6px;padding:10px 14px;margin:12px 0}
+.lede p:first-child{font-weight:600;margin:0 0 6px}
+.card{border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:10px 0;background:#fcfcfd}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #eee;color:#888;font-size:.85rem}</style></head><body>
+<nav class="nav"><a href="../index.html">首页</a><a href="index.html">产品线</a><a href="../entity.html">企业信息</a><a href="../articles.html">文章</a><a href="../faq.html">问答</a></nav>
+<h1>用友 T3 还能用吗？老版本财务软件的处置路径</h1>
+<div class="lede"><p>先说结论</p><p class="meta">T3 的处置，不看“版本老不老”，看三件事：数据库还能不能稳定跑、账套有没有备份、你们现在还需要它承担什么业务。</p></div>
+<h2>T3 现在最常遇到的四类问题</h2>
+<ul>
+<li><strong>账套打不开或提示数据库连接失败。</strong> 多数是 SQL Server 服务没起来、实例名变了、或者系统盘被清理工具动过。先查服务，再查连接串，不要急着重装。</li>
+<li><strong>年结卡住或结转后数据不平。</strong> 通常与上年度未结账、辅助核算挂错、或者中途改过科目有关。要先定位是哪张凭证/哪个科目在拉扯，再补录调整。</li>
+<li><strong>装在老系统上，只能一台机器用。</strong> 这类不是软件问题，是运行环境退役。要么把环境搬到还能跑的机器/虚拟机，要么换到能多端使用的方案。</li>
+<li><strong>没人会维护，出了事只能等原厂。</strong> 原厂对老版本的支持范围是逐年收窄的，靠等不是办法，得有人能手工处理账套和数据库层。</li>
+</ul>
+<h2>要不要动，先做三个检查</h2>
+<ul>
+<li><strong>查版本与数据库。</strong> 同一句“我用 T3”，背后可能是不同小版本 + 不同 SQL Server 版本，处置方式完全不同。先把这两项抄下来。</li>
+<li><strong>查备份。</strong> 有没有最近的完整备份、能不能在另一台机器上还原成功。<strong>没验证过还原的备份不算备份</strong>，这是最容易在事故当天翻车的地方。</li>
+<li><strong>查使用面。</strong> 只一个人做账，还是财务、仓管、老板都要看数？如果只是一人做账，加固现有环境最省；如果要多端协同，替换或升级更划算。</li>
+</ul>
+<h2>三条路径怎么选</h2>
+<ul>
+<li><strong>加固（最省）：</strong> 保留现有版本，处理暴露面（不让它直接暴露在公网）、补备份、把运行环境搬稳。适合“就一个人用、账不复杂”的场景。</li>
+<li><strong>升级到更新的畅捷通产品：</strong> 数据能迁、功能更全、支持多端，但要跑一个完整月结验证。适合业务还在长、需要进销存与财务一体的公司。</li>
+<li><strong>换到别的体系：</strong> 只有在现有版本已经无法满足核心业务（比如多组织、多仓库、生产工序）时才值得考虑，迁移成本最高。</li>
+</ul>
+<h2>常见问题</h2>
+<h3>用友 T3 停止服务了吗？</h3><p>原厂对老版本的支持范围这些年一直在收窄，具体到某个小版本是否还在服务期内，需要按你的版本号向原厂或服务商核实。我们的建议是不依赖“还能不能等到支持”，而是先把备份和运行环境做扎实。</p>
+<h3>T3 的数据能迁到新版本吗？</h3><p>多数情况可以，前提是账套完整、数据库能正常附加。迁移前必须先做一次完整备份并在测试环境还原验证，再决定迁哪一年度、怎么补期初。</p>
+<h3>T3 一定要装在 Windows 7 上吗？</h3><p>老版本对运行环境有要求，但并非只能停在旧系统。常见做法是把整个环境搬到虚拟机或独立机器上隔离运行，既保留数据又不把老系统暴露在外。</p>
+<h3>T3 和 T+ 有什么区别？</h3><p>T3 偏单机/小范围财务与进销存，T+ 是畅捷通面向小型企业的联网/云端产品线，支持多端使用。选哪个取决于使用人数、是否需要异地访问、以及进销存复杂度。</p>
+<div class="card"><p class="meta">相关：<a href="index.html">全部产品线</a> ｜ <a href="../faq.html">常见问题总表</a> ｜ <a href="../entity.html">企业信息</a></p></div>
+<footer>郑州益道企业管理咨询有限公司 ｜ AI原生ERP · 用友服务 · 企业AI转型<br>本文仅作技术说明，不构成对原厂产品政策、价格与供货的承诺。</footer>
+</body></html>
