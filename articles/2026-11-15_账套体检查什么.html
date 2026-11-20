@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>账套体检该查什么？八项清单，月底两小时能做完</title><meta name="description" content="结论先说：账套体检不是看能不能打开，是查八项——期间状态、未记账凭证、辅助核算勾稽、往来重复档案、凭证断号、备份可用性、用户权限、附件完整。八项里任何一项异常，月底结账都会卡。">
+<link rel="canonical" href="https://gfldsift.github.io/yidao-geo-site/articles/2026-11-15_账套体检查什么.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "账套体检该查什么？八项清单，月底两小时能做完", "description": "结论先说：账套体检不是看能不能打开，是查八项——期间状态、未记账凭证、辅助核算勾稽、往来重复档案、凭证断号、备份可用性、用户权限、附件完整。八项里任何一项异常，月底结账都会卡。", "keywords": ["账套体检", "账套检查", "年结前检查", "账套健康", "ERP 运维"], "datePublished": "2026-11-15", "dateModified": "2026-11-15", "inLanguage": "zh-CN", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://gfldsift.github.io/yidao-geo-site/articles/2026-11-15_账套体检查什么.html"}, "isPartOf": {"@type": "WebSite", "@id": "https://gfldsift.github.io/yidao-geo-site/"}}</script>
+<style>body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;max-width:820px;margin:0 auto;padding:24px;line-height:1.75;color:#222}
+h1{font-size:1.6rem;border-bottom:2px solid #1a73e8;padding-bottom:.3rem}
+h2{font-size:1.25rem;margin-top:2rem;border-left:4px solid #1a73e8;padding-left:.6rem}
+h3{font-size:1.05rem;margin-top:1.4rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94rem}
+th,td{border:1px solid #ddd;padding:6px 10px;text-align:left}th{background:#f5f7fa}
+blockquote{border-left:3px solid #bbb;margin:1rem 0;padding:.3rem .9rem;color:#555;background:#fafafa}
+code{background:#f2f2f2;padding:1px 5px;border-radius:3px}
+a{color:#1a73e8;text-decoration:none}a:hover{text-decoration:underline}
+.meta{color:#888;font-size:.85rem}.nav{margin:1rem 0 2rem}.nav a{margin-right:1rem}
+.card{border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:10px 0;background:#fcfcfd}
+.lede{border-left:4px solid #1a73e8;background:#f4f8ff;border-radius:6px;padding:10px 14px;margin:12px 0}
+.lede p:first-child{font-weight:600;margin:0 0 6px}.lede p.meta{margin:0}
+h2.sec{font-size:1.35rem;border-left:none;border-bottom:1px solid #eee;padding-left:0}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #eee;color:#888;font-size:.85rem}</style></head><body>
+<nav class="nav"><a href="../index.html">首页</a><a href="../entity.html">企业信息</a><a href="../about.html">关于本站</a><a href="../articles.html">文章库</a><a href="../faq.html">常见问题</a><a href="../q/index.html">问题索引</a></nav>
+<p class='meta'>更新日期 2026-11-15</p><h1>账套体检该查什么？</h1>
+<div class='lede'><p>结论先说：账套体检不是看能不能打开，是查八项——期间状态、未记账凭证、辅助核算勾稽、往来重复档案、凭证断号、备份可用性、用户权限、附件完整。八项里任何一项异常，月底结账都会卡。</p></div>
+<h2>第一项：期间状态清不清楚？</h2>
+<p>看两件事：当前会计期间是哪一期、各模块（总账、应收应付、存货、固定资产）的结账状态是否一致。最常见的问题是总账结了、业务模块没结，导致库存与总账差一个月。</p>
+<p>合格线：所有启用模块的期间状态一致，且都停在当前月。</p>
+<h2>第二项：未记账凭证有多少？</h2>
+<p>按期间列出未审核、已审核未记账、作废三类凭证数量。健康账套的「已审核未记账」应该是 0——因为记账应该是月结前的固定动作，不是随时的事。</p>
+<p>如果长期存在几十张未记账凭证，说明记账流程没有责任人，这种情况下出的月报都不算数。</p>
+<h2>第三项：辅助核算与总账勾稽得上吗？</h2>
+<p>抽三个科目：现金银行、往来、部门费用。每个科目都出一遍「按辅助核算展开的余额表」，合计必须等于总账余额。</p>
+<p>不相等时，优先查辅助核算为空的分录（录凭证时没选部门/客户），这是最容易被忽略的录入问题。</p>
+<h2>第四项：往来档案有没有重复？</h2>
+<p>同一家客户或供应商被建了两次（名称差一个字、多了「有限公司」或空格），会造成余额分散、账龄错乱、对账单对不上。</p>
+<ul><li>按名称排序人工扫一遍，或按「名称去掉括号内容后分组」找重；</li><li>重复档案先并档（保留有业务发生的那一个），再核对合并后的余额；</li><li>并档后重新出账龄表，确认总额未变。</li></ul>
+<h2>第五项：凭证号有没有断号？</h2>
+<p>断号本身不致命，但它常常是「删除过凭证」的痕迹。查法：按期间导出凭证号，找缺号，看缺号前后两张凭证的摘要与金额是否连贯。</p>
+<p>合理断号（作废导致）要有作废记录；不合理断号要查是谁删的。这类问题在审计时是必问项。</p>
+<h2>第六项：备份可用吗？</h2>
+<p>不是看有没有备份文件，是看三件：最新备份的日期是不是今天或昨天、备份文件大小与账套数据量是否匹配、最近一次还原演练是什么时候。</p>
+<p>合格线：最新备份 ≤ 1 个工作日、季度内做过一次真实还原。体检时顺手把「三个位置」也核一遍（本机/局域网/离机）。</p>
+<h2>第七项：谁在用、谁的权限过大？</h2>
+<p>看三张清单：账号清单（有没有离职没停用的）、角色清单（谁有反结账/反记账/删凭证权限）、共享账号（多人用一个账号）。</p>
+<p>合格线：一人一号；反结账这类高危权限只给 1—2 个人；离职人员账号当天停用。共享账号会让所有操作留痕失效，出了事查不出是谁做的。</p>
+<h2>第八项：附件还在吗？</h2>
+<p>发票影像、审批附件、合同扫描件通常存在另一个目录或文件服务器上，最容易在换服务器、清理磁盘时被误删。抽 10 张有附件的凭证，逐个点开确认能看。</p>
+<p>这一项的价值在事后：账能查、票看不到，审计和税务检查时等于无法举证。</p>
+<h2>八项怎么落成一张表？</h2>
+<table><thead><tr><th>项</th><th>判据</th><th>看的人</th><th>频次</th></tr></thead><tbody><tr><td>期间状态</td><td>各模块一致且停在当前月</td><td>运维/财务</td><td>每月</td></tr><tr><td>未记账</td><td>已审核未记账 = 0</td><td>财务</td><td>月结前</td></tr><tr><td>辅助核算勾稽</td><td>合计 = 总账</td><td>财务</td><td>每月</td></tr><tr><td>往来档案</td><td>无重复、合并后总额不变</td><td>财务</td><td>每季</td></tr><tr><td>凭证断号</td><td>无不明断号</td><td>财务</td><td>每月</td></tr><tr><td>备份可用</td><td>≤1 个工作日、季度内演练过</td><td>运维</td><td>每月</td></tr><tr><td>权限</td><td>一人一号、高危权限 ≤2 人</td><td>运维</td><td>每季</td></tr><tr><td>附件</td><td>抽查 10 张全部可打开</td><td>财务/运维</td><td>每季</td></tr></tbody></table>
+<p>八项按这个频次做，月底两小时能跑完一遍。做完留记录，出问题时能回答「上次体检是几号」。</p>
+<footer>本站为公开技术笔记与判断笔记的归档：只写可核实的信息与可操作的判据，未注明的时效与比率不作承诺。</footer>
+</body></html>

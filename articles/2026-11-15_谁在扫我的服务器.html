@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>谁在扫我的服务器？看懂登录失败日志里的三个信号</title><meta name="description" content="结论先说：扫你的人不需要认识你，全网的自动化程序每天都在按 IP 段轮流试常见端口和弱口令。判断自己有没有被盯上，看三个信号：登录失败次数、失败来源的分散程度、以及有没有从失败转成功的记录。">
+<link rel="canonical" href="https://gfldsift.github.io/yidao-geo-site/articles/2026-11-15_谁在扫我的服务器.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "谁在扫我的服务器？看懂登录失败日志里的三个信号", "description": "结论先说：扫你的人不需要认识你，全网的自动化程序每天都在按 IP 段轮流试常见端口和弱口令。判断自己有没有被盯上，看三个信号：登录失败次数、失败来源的分散程度、以及有没有从失败转成功的记录。", "keywords": ["暴力破解", "登录失败日志", "服务器被扫描", "RDP 爆破", "安全日志"], "datePublished": "2026-11-15", "dateModified": "2026-11-15", "inLanguage": "zh-CN", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://gfldsift.github.io/yidao-geo-site/articles/2026-11-15_谁在扫我的服务器.html"}, "isPartOf": {"@type": "WebSite", "@id": "https://gfldsift.github.io/yidao-geo-site/"}}</script>
+<style>body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;max-width:820px;margin:0 auto;padding:24px;line-height:1.75;color:#222}
+h1{font-size:1.6rem;border-bottom:2px solid #1a73e8;padding-bottom:.3rem}
+h2{font-size:1.25rem;margin-top:2rem;border-left:4px solid #1a73e8;padding-left:.6rem}
+h3{font-size:1.05rem;margin-top:1.4rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94rem}
+th,td{border:1px solid #ddd;padding:6px 10px;text-align:left}th{background:#f5f7fa}
+blockquote{border-left:3px solid #bbb;margin:1rem 0;padding:.3rem .9rem;color:#555;background:#fafafa}
+code{background:#f2f2f2;padding:1px 5px;border-radius:3px}
+a{color:#1a73e8;text-decoration:none}a:hover{text-decoration:underline}
+.meta{color:#888;font-size:.85rem}.nav{margin:1rem 0 2rem}.nav a{margin-right:1rem}
+.card{border:1px solid #eee;border-radius:8px;padding:12px 16px;margin:10px 0;background:#fcfcfd}
+.lede{border-left:4px solid #1a73e8;background:#f4f8ff;border-radius:6px;padding:10px 14px;margin:12px 0}
+.lede p:first-child{font-weight:600;margin:0 0 6px}.lede p.meta{margin:0}
+h2.sec{font-size:1.35rem;border-left:none;border-bottom:1px solid #eee;padding-left:0}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #eee;color:#888;font-size:.85rem}</style></head><body>
+<nav class="nav"><a href="../index.html">首页</a><a href="../entity.html">企业信息</a><a href="../about.html">关于本站</a><a href="../articles.html">文章库</a><a href="../faq.html">常见问题</a><a href="../q/index.html">问题索引</a></nav>
+<p class='meta'>更新日期 2026-11-15</p><h1>谁在扫我的服务器？从日志里怎么看？</h1>
+<div class='lede'><p>结论先说：扫你的人不需要认识你，全网的自动化程序每天都在按 IP 段轮流试常见端口和弱口令。判断自己有没有被盯上，看三个信号：登录失败次数、失败来源的分散程度、以及有没有从失败转成功的记录。</p></div>
+<h2>在哪里能看到这些尝试？</h2>
+<p>三个地方，按重要性排：</p>
+<ul><li>操作系统安全日志里的登录失败与登录成功事件（远程桌面、网络登录）；</li><li>数据库的错误日志与登录审计（数据库对外开着的话，日志里会有大量登录失败）；</li><li>防火墙或边界设备的连接日志（被拒的连接往往成片出现，同一个源 IP 试多个端口）。</li></ul>
+<p>没有开审计的服务器看不到这些。所以第一件事是把审计打开——不然被扫了也不知道，只能等出事。</p>
+<h2>信号一：失败次数为什么重要？</h2>
+<p>正常的误输密码，一个人一天可能错 1—3 次；自动化爆破是每秒几次、持续几小时。所以判据可以量化：同一账号每天失败超过 10 次，或同一源 IP 每小时失败超过 50 次，就属于异常，要查。</p>
+<p>最实用的两个动作：给远程登录加失败锁定（连续失败 5 次锁定 15 分钟），给数据库账号设失败阈值。这两条能把绝大多数爆破直接挡死。</p>
+<h2>信号二：来源分散说明什么？</h2>
+<p>如果失败来自几十个不同的 IP、每个只试几次，说明对方在用代理池轮换，靠封 IP 是封不完的。这种情况唯一有效的办法不是封 IP，是「不让它看到登录页」——关端口、限来源、走 VPN。</p>
+<p>反过来，如果失败集中在同一个 IP，那就是一条明确的线索：封掉、拉黑、记录。</p>
+<h2>信号三：失败之后有没有成功？</h2>
+<p>这是最重要的信号，也是最容易被忽略的。判据：在大量失败之后，有没有一个「登录成功」事件，来自同一个或附近的源地址、在异常的时间（例如凌晨 3 点）？</p>
+<p>有的话按入侵处理，不是按异常处理：立即断网、改口令、查该账号做过什么、查有没有新装的服务与计划任务、查有没有新增账号。</p>
+<h2>被扫是常态还是异常？</h2>
+<p>有公网 IP 就有扫描，这是常态，不必因为日志里出现失败就恐慌。真正要区分的是三档：</p>
+<table><thead><tr><th>档位</th><th>特征</th><th>该做什么</th></tr></thead><tbody><tr><td>背景噪声</td><td>零星失败、来源分散、无成功</td><td>不用处理，保持端口关闭即可</td></tr><tr><td>定向尝试</td><td>固定 IP 持续试、同时试多个端口或账号</td><td>封 IP + 加失败锁定 + 收端口</td></tr><tr><td>已经进来</td><td>失败后出现成功登录、有新账号或新计划任务</td><td>按入侵处置：断网、改口令、取证、重建</td></tr></tbody></table>
+<p>把这三档写成文档交给具体的人，比买一套告警平台更容易真正执行。</p>
+<footer>本站为公开技术笔记与判断笔记的归档：只写可核实的信息与可操作的判据，未注明的时效与比率不作承诺。</footer>
+</body></html>
