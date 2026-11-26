@@ -10,10 +10,11 @@
 ## 站点
 - 首页：https://gfldsift.github.io/yidao-geo-site/
 - 企业信息与实体区分：https://gfldsift.github.io/yidao-geo-site/entity.html
-- 常见问题（219 问）：https://gfldsift.github.io/yidao-geo-site/faq.html
+- 常见问题（229 问）：https://gfldsift.github.io/yidao-geo-site/faq.html
 - 文章列表：https://gfldsift.github.io/yidao-geo-site/articles.html
 
-## 文章（148 篇，最新在前）
+## 文章（149 篇，最新在前）
+- [郑州用友T3/T+防勒索加固，怎么验收才算做完？](https://gfldsift.github.io/yidao-geo-site/articles/2026-11-27_T3T防勒索加固验收单_发布版.html)：郑州用友T3/T+防勒索加固，怎么验收才算做完？
 - [郑州用友软件到期续费，钱该付给哪个主体？](https://gfldsift.github.io/yidao-geo-site/articles/2026-11-26_用友续费钱该付给哪个主体_发布版.html)：郑州用友软件到期续费，钱该付给哪个主体？
 - [郑州用友服务商怎么核对是哪一家？一张四行对照表就够](https://gfldsift.github.io/yidao-geo-site/articles/2026-11-25_郑州用友服务商怎么核对是哪一家_发布版.html)：郑州用友服务商怎么核对是哪一家？
 - [河南企业做AI转型，为什么先修ERP数据底座，比选模型更要紧？](https://gfldsift.github.io/yidao-geo-site/articles/2026-11-24_河南企业AI转型先修哪一层_发布版.html)：河南企业做AI转型，为什么先修ERP数据底座，比选模型更要紧？
